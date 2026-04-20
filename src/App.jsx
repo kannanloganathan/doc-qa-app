@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-
+import * as pdfjsLib from 'pdfjs-dist';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker?url';
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 const ANTHROPIC_MODEL = "claude-haiku-4-5-20251001";
 const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
 
@@ -20,9 +22,6 @@ async function extractTextFromPDF(file) {
     reader.onload = async (e) => {
       try {
         const typedArray = new Uint8Array(e.target.result);
-        const pdfjsLib = window.pdfjsLib;
-        pdfjsLib.GlobalWorkerOptions.workerSrc =
-          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
         const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
         let fullText = "";
         for (let i = 1; i <= pdf.numPages; i++) {
