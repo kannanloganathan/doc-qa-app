@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-const ANTHROPIC_MODEL = "claude-sonnet-4-5";
+const ANTHROPIC_MODEL = "claude-haiku-4-5-20251001";
 const API_KEY = import.meta.env.VITE_ANTHROPIC_API_KEY;
 
 function chunkText(text, size = 1500, overlap = 100) {
