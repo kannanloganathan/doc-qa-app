@@ -3,7 +3,7 @@
 Upload any PDF or text file and ask questions about it in plain English. 
 Answers are grounded in the document with section citations.
 
-**Live demo:** https://your-app.vercel.app
+**Live demo:** https://doc-qa-app-murex.vercel.app/
 
 ## Tech stack
 - React + Vite (frontend)
@@ -21,7 +21,7 @@ Answers are grounded in the document with section citations.
 
 1. Clone the repo
 ```bash
-   git clone https://github.com/YOUR_USERNAME/doc-qa-app.git
+   git clone https://github.com/kannanloganathan/doc-qa-app
    cd doc-qa-app
 ```
 
