@@ -1,16 +1,45 @@
-# React + Vite
+# Document Q&A — AI-powered document assistant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Upload any PDF or text file and ask questions about it in plain English. 
+Answers are grounded in the document with section citations.
 
-Currently, two official plugins are available:
+**Live demo:** https://your-app.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
+- React + Vite (frontend)
+- Vercel serverless functions (backend proxy)
+- Anthropic Claude API (AI)
+- PDF.js (PDF parsing)
 
-## React Compiler
+## How it works
+1. User uploads a PDF or .txt file
+2. The document is split into chunks in the browser
+3. Chunks are sent with the question to Claude via a serverless proxy
+4. Claude returns a cited answer grounded in the document
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Running locally
 
-## Expanding the ESLint configuration
+1. Clone the repo
+```bash
+   git clone https://github.com/YOUR_USERNAME/doc-qa-app.git
+   cd doc-qa-app
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. Install dependencies
+```bash
+   npm install
+```
+
+3. Add your Anthropic API key
+```bash
+   cp .env.example .env
+   # edit .env and add your key
+```
+
+4. Start the proxy and dev server (two terminals)
+```bash
+   node proxy.js        # terminal 1
+   npm run dev          # terminal 2
+```
+
+5. Open http://localhost:5173
